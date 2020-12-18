@@ -22,7 +22,7 @@ function GraduateAdd(props) {
   const [graduate, setGraduate] = useState(initialState);
 
   function handleChange(event) {
-    setGraduate({ ...graduate, [event.target.name]: event.target.value });
+    setGraduate({...graduate, [event.target.name] : event.target.value });
   }
 
   function handleSubmit(event) {

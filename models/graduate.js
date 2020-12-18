@@ -22,22 +22,22 @@ const graduateSchema = new mongoose.Schema({
 
   // Enumurated Type To Type
   full_time: {
-    type: Boolean,
+     type: String,
   },
   part_time: {
-    type: Boolean,
+     type: String,
   },
   contract: {
-    type: Boolean,
+     type: String,
   },
   temp: {
-    type: Boolean,
+     type: String,
   },
   willing_relocate: {
-    type: Boolean,
+     type: String,
   },
   willing_remote: {
-    type: Boolean,
+     type: String,
   },
   linkedin: {
     type: String,
@@ -52,8 +52,7 @@ const graduateSchema = new mongoose.Schema({
     type: String,
   },
   upload_cv: {
-    // data: Buffer,
-    // contentType: String,
+
     type: String,
 
   },
