@@ -189,10 +189,6 @@ function GraduateAdd(props) {
                     Open to remote work
                   </label>
                 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> cdcb54f62a7f1de06472507823335f3505411ddd
                 <div className="custom-control-inline custom-switch">
                   <input
                     className="custom-control-input"

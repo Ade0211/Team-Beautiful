@@ -17,6 +17,7 @@ const GraduateInfo = (props) => {
           console.log("error", error);
         }
       }
+    
       getGraduate();
     },
     [props],
@@ -30,14 +31,14 @@ const GraduateInfo = (props) => {
       console.error(error);
     }
   }
-  
+
   return (
     <div>
       <h2>{graduate.fullname}</h2>
       <small>{graduate.headline}</small>
       <p>{graduate.email}</p>
       <p>{graduate.website}</p>
-      
+
       <div className="btn-group">
         <Link to={`/articles/${graduate._id}/edit`} className="btn btn-primary">Edit</Link>
         <button onClick={handleDelete} className="btn btn-danger">Delete</button>

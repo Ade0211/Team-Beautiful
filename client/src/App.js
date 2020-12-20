@@ -16,11 +16,7 @@ import LoginForm from "./components/pages/LoginForm";
 // import GraduateEdit from "./components/graduates/GraduateEdit";
 import GraduateInfo from "../src/components/graduates/GraduateInfo";
 // import Logo
-<<<<<<< HEAD
-import logo from "./images/logo.png";
-=======
 import logo from "./components/utility/logo.png"
->>>>>>> cdcb54f62a7f1de06472507823335f3505411ddd
 // import HomePage from "./components/graduates/GraduateHomePage";
 import GraduateInformationDisplay from "././components/graduates/GraduateInformationDisplay";
 import NotFound from "./components/pages/NotFound";
