@@ -1,30 +1,31 @@
 import React, { useState } from "react";
 import { post } from "axios";
-
 function GraduateAdd(props) {
   const initialState = {
     fullname: "",
     headline: "",
     current_location: "",
     languages: "",
+    linkedin: "",
+    upload_cv: "",
+    resume_textarea: "",
+    website: "",
+    mobile: "",
     full_time: false,
     part_time: false,
     contract: false,
     temp: false,
     willing_relocate: false,
     willing_remote: false,
-    linkedin: "",
-    upload_cv: "",
-    resume_textarea: "",
-    website: "",
-    mobile: "",
+    internship: false,
   };
   const [graduate, setGraduate] = useState(initialState);
-
   function handleChange(event) {
-    setGraduate({...graduate, [event.target.name] : event.target.value });
+setGraduate({
+      ...graduate,
+      [event.target.name]: event.target.value
+    });
   }
-
   function handleSubmit(event) {
     event.preventDefault();
     if (!graduate.fullname || !graduate.current_location) return;
@@ -32,18 +33,15 @@ function GraduateAdd(props) {
       try {
         const response = await post("/api/graduates", graduate);
         props.history.push(`/graduates/${response.data._id}`);
-
       } catch (error) {
         console.log("error", error);
       }
     }
     postgraduate();
   }
-
   // function handleCancel() {
   //   props.history.push("/graduates");
   // }
-
   return (
     <div>
       <h1>Create Profile</h1>
@@ -66,12 +64,10 @@ function GraduateAdd(props) {
                   onChange={handleChange}
                 />
               </div>
-
               <div className="mb-3 form-group">
                 <label for="headlineInput" className="form-label">
                   Headline
                 </label>
-
                 <input
                   placeholder="Enter your headline"
                   className="form-control"
@@ -81,12 +77,10 @@ function GraduateAdd(props) {
                   onChange={handleChange}
                 />
               </div>
-
               <div className="mb-3 form-group">
                 <label for="currentLocationInput" className="form-label">
                   Current Location
                 </label>
-
                 <input
                   placeholder="Enter your city"
                   className="form-control"
@@ -96,12 +90,10 @@ function GraduateAdd(props) {
                   onChange={handleChange}
                 />
               </div>
-
               <div className="mb-3 form-group">
                 <label for="languagesInput" className="form-label">
                   Languages
                 </label>
-
                 <input
                   placeholder="Enter your language"
                   type="text"
@@ -112,11 +104,9 @@ function GraduateAdd(props) {
                   onChange={handleChange}
                 />
               </div>
-
               <label for="workTypeInput" className="form-label">
                 Work type
               </label>
-
               <div className="mb-3 form-group">
                 <div className="form-check form-check-inline">
                   <input
@@ -127,12 +117,10 @@ function GraduateAdd(props) {
                     value={graduate.full_time}
                     onChange={handleChange}
                   />
-
                   <label className="form-check-label" for="fulltime">
                     Full time
                   </label>
                 </div>
-
                 <div className="form-check form-check-inline">
                   <input
                     className="form-check-input"
@@ -142,12 +130,10 @@ function GraduateAdd(props) {
                     value={graduate.part_time}
                     onChange={handleChange}
                   />
-
                   <label className="form-check-label" for="parttime">
                     Part time
                   </label>
                 </div>
-
                 <div className="form-check form-check-inline">
                   <input
                     className="form-check-input"
@@ -157,12 +143,10 @@ function GraduateAdd(props) {
                     value={graduate.contract}
                     onChange={handleChange}
                   />
-
                   <label className="form-check-label" for="contract">
                     Contract
                   </label>
                 </div>
-
                 <div className="form-check form-check-inline">
                   <input
                     className="form-check-input"
@@ -172,15 +156,12 @@ function GraduateAdd(props) {
                     value={graduate.temp}
                     onChange={handleChange}
                   />
-
                   <label className="form-check-label" for="temp">
                     Temp
                   </label>
                 </div>
-
                 <br />
                 <br />
-
                 <div className="custom-control-inline custom-switch">
                   <input
                     className="custom-control-input"
@@ -190,12 +171,10 @@ function GraduateAdd(props) {
                     value={graduate.willing_relocate}
                     onChange={handleChange}
                   />
-
                   <label className="custom-control-label" for="willingRelocate">
                     Willing to relocate
                   </label>
                 </div>
-
                 <div className="custom-control-inline custom-switch">
                   <input
                     className="custom-control-input"
@@ -209,15 +188,25 @@ function GraduateAdd(props) {
                     Open to remote work
                   </label>
                 </div>
+                <div className="custom-control-inline custom-switch">
+                  <input
+                    className="custom-control-input"
+                    type="checkbox"
+                    id="internship"
+                    name="internship"
+                    value={graduate.internship}
+                    onChange={handleChange}
+                  />
+                  <label className="custom-control-label" for="internship">
+                    Internship
+                  </label>
+                </div>
               </div>
-
               <br />
-
               <div className="mb-3">
                 <label for="linkedIn" className="form-label">
                   LinkedIn
                 </label>
-
                 <input
                   placeholder="Enter your linkedin URL"
                   type="text"
@@ -228,12 +217,10 @@ function GraduateAdd(props) {
                   onChange={handleChange}
                 />
               </div>
-
               <div className="mb-3">
                 <label for="website" className="form-label">
                   Website
                 </label>
-
                 <input
                   placeholder="Enter your website URL"
                   type="text"
@@ -244,14 +231,11 @@ function GraduateAdd(props) {
                   onChange={handleChange}
                 />
               </div>
-
               <br />
-
               <div class="input-group mb-3">
                 <label class="input-group-text" for="fileUpload">
                   Upload CV
                 </label>
-
                 <input
                   type="file"
                   class="form-control"
@@ -261,22 +245,16 @@ function GraduateAdd(props) {
                   onChange={handleChange}
                 />
               </div>
-
               <br />
-
               <h3>Hidden Details</h3>
-
               <div id="emailHelp" class="form-text">
                 We'll never share this information with potential Employers.
               </div>
-
               <br />
-
               <div class="mb-3">
                 <label for="emailAddress" class="form-label">
                   Email address
                 </label>
-
                 <input
                   type="email"
                   class="form-control"
@@ -287,12 +265,10 @@ function GraduateAdd(props) {
                   onChange={handleChange}
                 />
               </div>
-
               <div class="mb-3">
                 <label for="mobilePhoneInput" class="form-label">
                   Mobile Phone
                 </label>
-
                 <input
                   type="text"
                   class="form-control"
@@ -303,13 +279,11 @@ function GraduateAdd(props) {
                 />
               </div>
             </div>
-
             <div class="col">
               <div class="mb-3">
                 <label for="txtArea" class="form-label">
                   Enter Your resume details here
                 </label>
-
                 <textarea
                   class="form-control"
                   id="txtArea"
@@ -344,7 +318,6 @@ function GraduateAdd(props) {
             </div>
           </div>
         </div>
-
         {/* <div className="form-group">
           <label>Title</label>
           <input name="title" type="text" value={graduate.title} onChange={handleChange} className="form-control" />
@@ -361,5 +334,4 @@ function GraduateAdd(props) {
     </div>
   );
 }
-
 export default GraduateAdd;

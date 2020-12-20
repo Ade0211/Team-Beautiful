@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import logo from "../../images/logo.png";
+// import logo from "../../images/logo.png";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
@@ -82,6 +82,9 @@ const Home = ({interval = 2000}) => {
   };
 
   filteredData = data
+  // console.log(filteredData);
+  // const randomShuffle = shuffleArray(filteredData);
+  // randomShuffle
     .filter((loc) =>
       loc.current_location.toLowerCase().includes(location.toLowerCase()),
     )
@@ -104,36 +107,11 @@ const Home = ({interval = 2000}) => {
       !!checkBoxState.contract ? item.contract === true : true,
     );
 
-  console.log(filteredData);
-  const randomShuffle = shuffleArray(filteredData);
-
-//see if it works
-// useEffect(() => {
-//   const i = setInterval(() => {
-//      setData(([first, ...rest]) => [...rest, first]);
-//   }, 1000);
-
-//   return () => clearInterval(i);
-// }, []);
-// console.log(data);
-// console.log(currentQuote);
+  let randomShuffle = shuffleArray(filteredData)
 
 
   return (
     <div className="container-fluid navbar-expand-lg">
-      {/* <div className="card-header container-fluid">
-        <img
-          className="logo bg-light rounded"
-          src={logo}
-          alt="header-logo"
-          style={{ width: "5rem" }}
-        />
-        <div className="d-flex justify-content-end">
-          <h6 className="mr-4">CYF Login</h6>
-          <h6>Student Login</h6>
-        </div>
-      </div> */}
-
       <div className="container">
         <h4 className="display-3">Graduates Directory</h4>
         <p>

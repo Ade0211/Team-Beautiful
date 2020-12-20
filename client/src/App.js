@@ -15,7 +15,7 @@ import PreviewProfile from "./components/graduates/PreviewProfile";
 // import GraduateEdit from "./components/graduates/GraduateEdit";
 import GraduateInfo from "../src/components/graduates/GraduateInfo";
 // import Logo
-import logo from "./images/logo.png"
+import logo from "./components/utility/logo.png"
 // import HomePage from "./components/graduates/GraduateHomePage";
 import GraduateInformationDisplay from "././components/graduates/GraduateInformationDisplay";
 
