@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.containerForm {
+  margin: 80px auto;
+  max-width: 490px;
+  min-width: 400px;
+  border: 1px solid rgba(117, 116, 116, 0.507);
+}
+.containerForm form {
+  width: 100%;
+  padding: 40px;
+}
+.containerForm input {
+  width: 60%;
+}
+.containerForm label {
+  display: inline-block;
+  letter-spacing: 0.1rem;
+  margin-bottom: 3px;
+  width: 160px;
+}
+.containerForm textarea {
+  width: 100%;
+  margin-top: 2rem;
+}
+.containerForm,
+.containerForm textarea,
+.containerForm input {
+  border: rgba(134, 132, 132, 0.507);
+  box-shadow: 1px 1px 4px 1px rgba(117, 116, 116, 0.507);
+}
+.containerForm textarea:focus,
+.containerForm input:focus {
+  outline: none !important;
+  border-color: #97999b;
+  box-shadow: 0 0 2px #6a6a6b;
+}
+.btn {
+  width: 100%;
+  text-align: center;
+}
+button {
+  background-color: rgba(39, 90, 231, 0.815);
+  color: white;
+  padding: 8px 20px;
+  border: 1px solid transparent;
+  outline: none;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  margin-top: 7px;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+}
+.btn button:hover {
+  border: 1px solid rgb(29, 90, 180);
+  background-color: rgb(38, 49, 212);
+  cursor: pointer;
+}
+.info {
+  margin-top: 1rem;
+}
+.msg {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  letter-spacing: 0.1rem;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgb(8, 156, 8);
+  display: none;
+}
+.msgAppear {
+  display: block;
+}
+@media screen and (min-width: 480px) {
+  .containerForm {
+    width: 98%;
+  }
+}

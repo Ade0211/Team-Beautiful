@@ -19,11 +19,14 @@ function GraduateAdd(props) {
     willing_remote: false,
     internship: false,
   };
+
   const [graduate, setGraduate] = useState(initialState);
   function handleChange(event) {
-setGraduate({
+
+    setGraduate({
       ...graduate,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+
     });
   }
   function handleSubmit(event) {
@@ -188,6 +191,7 @@ setGraduate({
                     Open to remote work
                   </label>
                 </div>
+
                 <div className="custom-control-inline custom-switch">
                   <input
                     className="custom-control-input"
