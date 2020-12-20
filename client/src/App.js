@@ -2,7 +2,6 @@ import "./index.css";
 import {
   BrowserRouter as Router,
   Route,
-  NavLink,
   Switch,
 } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
@@ -20,7 +19,8 @@ import GraduateInfo from "../src/components/graduates/GraduateInfo";
 import logo from "./images/logo.png";
 // import HomePage from "./components/graduates/GraduateHomePage";
 import GraduateInformationDisplay from "././components/graduates/GraduateInformationDisplay";
-// import GithubMsLogin from "./components/pages/GithubMsLogin";
+import NotFound from "./components/pages/NotFound";
+import ContactForm from "./components/pages/ContactForm";
 
 function App() {
   return (
@@ -38,66 +38,33 @@ function App() {
 
 const Navigation = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
-      <a href="/" className="navbar-brand">
-        {/* the graduate */}
-        <img className="logo bg-light rounded" src={logo} alt="header-logo" style={{width: "5rem"}}/>
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarToggler"
-        aria-controls="navbarToggler"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarToggler">
-      {/* <div className="d-flex justify-content-end">
-          <h6 className="mr-4">CYF Login</h6>
-          <h6>Student Login</h6>
-        </div> */}
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <NavLink exact className="nav-link" activeClassName="active" to="/">
-              Home
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              exact
-              className="nav-link"
-              activeClassName="active"
-              to="/graduates"
-            >
-              Graduates
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              exact
-              className="nav-link"
-              activeClassName="active"
-              to=""
-            >
-              {/* CYF Login */}
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              exact
-              className="nav-link"
-              activeClassName="active"
-              to=""
-            >
-            Login
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-    </nav>
+
+    <Navbar bg="primary" variant="dark" expand="lg" collapseOnSelect>
+      <Container>
+        <LinkContainer to="/">
+          <Navbar.Brand>
+            {" "}
+            <img
+              className="logo bg-light rounded"
+              src={logo}
+              alt="header-logo"
+              style={{ width: "8rem" }}
+            />
+          </Navbar.Brand>
+        </LinkContainer>
+
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav activeKey={window.location.pathname} className="ml-auto">
+            <LinkContainer to="/LoginForm">
+              <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
   );
 };
 
@@ -105,7 +72,7 @@ const Main = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="LoginForm" component={LoginForm} />
+      <Route exact path="/LoginForm" component={LoginForm} />
       <Route exact path="/graduates" component={GraduateList} />
       <Route exact path="/graduates/new" component={GraduateAdd} />
       <Route exact path="/graduates/:_id" component={PreviewProfile} />
@@ -113,9 +80,19 @@ const Main = () => {
 
       <Route exact path="/graduates/:_id/edit" component={GraduateEdit} />
       <Route exact path="/graduates/:_id" component={GraduateInfo} />
-      <Route exact path= "/graduates/:_id/profile" component= {GraduateInformationDisplay}/>
 
-
+      <Route
+        exact
+        path="/graduates/:_id/profile"
+        component={GraduateInformationDisplay}
+      />
+      {/* <Route exact path="/graduates/:_id/edit" component={GraduateEdit} /> */}
+      <Route>
+        <NotFound />
+      </Route>
+      <Route>
+        <ContactForm />
+      </Route>
 
     </Switch>
   );

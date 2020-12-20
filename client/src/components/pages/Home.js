@@ -1,9 +1,19 @@
-import React, { useState, useCallback } from "react";
-import logo from "../../images/logo.png";
+
+import React, { useState } from "react";
+import "../../bootstrap.min.css";
+import "../../index.css";
+import {
+  Container,
+  Row,
+  Col,
+  InputGroup,
+  FormControl,
+  Button,
+} from "react-bootstrap";
+
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
-import useGraduateData from "../utility/useGraduateData";
 
 function shuffleArray(array) {
   let i = array.length - 1;
@@ -17,7 +27,8 @@ function shuffleArray(array) {
 }
 
 
-const Home = ({interval = 2000}) => {
+const Home = () => {
+
   const [location, setLocation] = useState("");
   const [language, setLanguage] = useState("");
   const [currentQuote, setCurrentQuote] = useState();
@@ -79,6 +90,8 @@ const Home = ({interval = 2000}) => {
       [event.target.name]: !checkBoxState[event.target.name],
     });
   };
+
+  const randomShuffle = shuffleArray(filteredData);
 
   const executeOnClick = (isExpanded) => {
     console.log(isExpanded);
@@ -397,10 +410,10 @@ const Home = ({interval = 2000}) => {
       </div> */}
       {/* <Footer /> */}
 
-      <div>
-        <div className="container">
-          <div className="row mb-2">
-            {filteredData.map((graduate) => {
+      <div className="container">
+        <div className="row mb-2">
+          {filteredData.length > 0 &&
+            filteredData.map((graduate, _id) => {
               return (
                 <div className="col-md-6 card-text-left border-success">
                   <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
@@ -415,7 +428,6 @@ const Home = ({interval = 2000}) => {
                         </h4>
                         <h3>{graduate.fullname}</h3>
                       </strong>
-
                       <h3 className="mb-0">{graduate.headline}</h3>
                       <div className="mb-1 text-muted">
                         {graduate.current_location}
@@ -423,30 +435,31 @@ const Home = ({interval = 2000}) => {
                       <div className="mb-1 text-muted">
                         Languages : {graduate.languages}
                       </div>
-                      <div class="row justify-content-around">
+                      <div className="row justify-content-around">
                         <p>
                           {graduate.willing_remote ? (
-                            <button type="button" class="btn btn-success">
+                            <button type="button" className="btn btn-success">
                               Can Work Remote
                             </button>
                           ) : (
-                            <button type="button" class="btn btn-warning">
+                            <button type="button" className="btn btn-danger">
                               Can't Work Remote
                             </button>
                           )}
                         </p>
                         <p>
                           {graduate.willing_relocate ? (
-                            <button type="button" class="btn btn-success">
+                            <button type="button" className="btn btn-success">
                               Can Relocate
                             </button>
                           ) : (
-                            <button type="button" class="btn btn-warning">
+                            <button type="button" className="btn btn-danger">
                               Can't Relocate
                             </button>
                           )}
                         </p>
                       </div>
+
                       <div className="row justify-content-around">
                         <p class="card-text">
                           {graduate.full_time ? "Full Time" : ""}
@@ -461,9 +474,7 @@ const Home = ({interval = 2000}) => {
                           {graduate.willing_remote ? "Open to Remote" : ""}
                         </p>
                       </div>
-
                       <hr />
-
                       <div className="container">
                         <div class="row justify-content-around ">
                           <div class="col-4">
@@ -501,24 +512,49 @@ const Home = ({interval = 2000}) => {
                           </div>
                           <div class="col-4 mt-1">
                             <i class="fab fa-github fa-2x"></i>
-                            <a className="ml-2" style={{ fontSize: "70%" }}>
+                            <Link className="ml-2" style={{ fontSize: "70%" }}>
                               {" "}
                               GitHub
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
-
-                      <p className="mb-0">{graduate.resume_textarea}</p>
-                      <Link href="#" className="stretched-link">
-                        View Profile
-                      </Link>
+                      <hr />
+                      <div>
+                        <ShowMoreText
+                          lines={3}
+                          more={
+                            <Button
+                              type="button"
+                              class="btn btn-primary btn-sm"
+                            >
+                              Show more
+                            </Button>
+                          }
+                          less={
+                            <button
+                              type="button"
+                              class="btn btn-primary btn-sm float-right"
+                            >
+                              Show less
+                            </button>
+                          }
+                          className="content-css"
+                          anchorClass="my-anchor-css-class"
+                          onClick={executeOnClick}
+                          expanded={false}
+                          width={350}
+                        >
+                          <p class="card-subtitle mb-2 text-dark">
+                            {graduate.resume_textarea}
+                          </p>
+                        </ShowMoreText>
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
-          </div>
         </div>
       </div>
     </>
