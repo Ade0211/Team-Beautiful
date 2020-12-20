@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { get } from "axios";
 import { Link } from "react-router-dom";
-import {
-  Card,
-  Button,
-  Container,
-  CardDeck,
-  CardColumns,
-  Row,
-  CardGroup,
-} from "react-bootstrap";
+import { Card, Button, Container, CardDeck, Row } from "react-bootstrap";
 
 const GraduateList = () => {
   const [graduates, setGraduates] = useState([]);
@@ -44,7 +36,10 @@ const GraduateList = () => {
           {graduates.map((graduate) => {
             return (
               <Row>
-                <Card className="text-center" style={{ flex: 1 , width:"22rem"}}>
+                <Card
+                  className="text-center"
+                  style={{ flex: 1, width: "22rem" }}
+                >
                   <Card.Header>{graduate.fullname}</Card.Header>
                   <Card.Body>
                     <Card.Title>{graduate.headline}</Card.Title>

@@ -39,6 +39,9 @@ const graduateSchema = new mongoose.Schema({
   willing_remote: {
      type: String,
   },
+  internship: {
+    type: Boolean,
+  },
   linkedin: {
     type: String,
   },

@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col, Modal, Button, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import ShowMoreText from "react-show-more-text";
 
-function extractHostname(url) {
-  var hostname;
-  //find & remove protocol (http, ftp, etc.) and get hostname
 
-  if (url.indexOf("//") > -1) {
-      hostname = url.split('/')[2];
-  }
-  else {
-      hostname = url.split('/')[0];
-  }
+const GraduateInformationDisplay = ({ filteredData }) => {
+  const [show, setShow] = useState(false);
 
-  //find & remove port number
-  hostname = hostname.split(':')[0];
-  //find & remove "?"
-  hostname = hostname.split('?')[0];
-
-  return hostname;
-}
-function extractRootDomain(url) {
-  var domain = extractHostname(url),
-      splitArr = domain.split('.'),
-      arrLen = splitArr.length;
 
   //extracting the root domain here
   //if there is a subdomain
@@ -85,14 +66,18 @@ const GraduateInformationDisplay = () => {
           <Col className="columns " sm={5}>
             Location: {graduate.current_location}
           </Col>
-
-          <Button size="sm" variant="warning" className="mr-2">
-            Open to relocation
-          </Button>
-
-          <Button variant="success" size="sm">
-            Open to remote
-          </Button>
+        </Row>
+        <Row className="row justify-content-around">
+          <Col>
+            <Button size="sm" variant="warning" className="mr-2">
+              Open to relocation
+            </Button>
+          </Col>
+          <Col>
+            <Button variant="btn btn-success" size="sm">
+              Open to remote
+            </Button>
+          </Col>
         </Row>
         <Row className="justify-content-center mt-3">
           <Col>
@@ -104,7 +89,7 @@ const GraduateInformationDisplay = () => {
           </Col>
         </Row>
 
-        <p class="font-italic">Languages: {graduate.languages}</p>
+        <p className="font-italic">Languages: {graduate.languages}</p>
         <hr />
         <Container className="justify-content-center">
           <Row className="rows">
@@ -112,14 +97,28 @@ const GraduateInformationDisplay = () => {
             <hr />
             <Col xs={6} md={4} className="col-xs-6 mr-5 mb-3">
               <i class="fab fa-linkedin fa-2x"></i>
-              <a className="ml-2" style={{ fontSize: "65%" }} target= "_blank" rel="noreferrer" href={"http://" + graduate.linkedin}>
+
+              <a
+                className="ml-2"
+                style={{ fontSize: "65%" }}
+                target="_blank"
+                rel="noreferrer"
+                href={graduate.linkedin}
+              >
+
                 linkedIn
               </a>
             </Col>
            <Col className="col-xs-4 ">
               <i class="fas fa-globe fa-2x"></i>
-              <a className="ml-2" style={{ fontSize: "70%" }} href={"http://"+ graduate.website}>
-                website
+
+              <a
+                className="ml-2"
+                style={{ fontSize: "70%" }}
+                href={graduate.website}
+              >
+                {graduate.website}
+
               </a>
             </Col>
           </Row>
@@ -127,22 +126,66 @@ const GraduateInformationDisplay = () => {
             <hr />
         <Col xs={6} md={4} className="columns mr-5">
               <i class="fas fa-file-csv fa-2x"></i>
-              <a className="ml-2" style={{ fontSize: "80%" }} href ={graduate.upload_cv}>
-                cv
+
+              <a
+                className="ml-2"
+                style={{ fontSize: "80%" }}
+                href={graduate.resume}
+              >
+                cv {graduate.resume}
+
               </a>
             </Col>
         <Col className="columns">
               <i class="fab fa-github fa-2x"></i>
-              <a className="ml-2" style={{ fontSize: "70%" }} href={"http://"+ graduate.github}>
-                github
+
+              <a
+                className="ml-2"
+                style={{ fontSize: "70%" }}
+                href={graduate.github}
+              >
+                github {graduate.GitHub}
+
               </a>
             </Col>
           </Row>
           <hr />
         </Container>
         <Container>
+
+          <ShowMoreText
+            lines={3}
+            more={
+              <button type="button" className="btn btn-primary btn-sm">
+                Show more
+              </button>
+            }
+            less={
+              <button type="button" className="btn btn-primary btn-sm">
+                Show less
+              </button>
+            }
+            className="content-css"
+            anchorClass="my-anchor-css-class"
+            onClick={executeOnClick}
+            expanded={false}
+            width={400}
+          >
+            <p>{graduate.resume_textarea}</p>
+          </ShowMoreText>
+          <Row>
+            <Button activeKey={window.location.pathname}>
+              <LinkContainer to="/ContactForm">
+                <Nav.Link>Email Enquiries</Nav.Link>
+              </LinkContainer>
+            </Button>
+            {/* <Button>
+              <Link to="/ContactForm">Send Email to Enquire</Link>
+            </Button> */}
+          </Row>
+
           
-          <p>{graduate.resume_textarea}</p>
+
         </Container>
       </Modal.Body>
     </Modal.Dialog>
