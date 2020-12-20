@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import "../../bootstrap.min.css";
 import "../../index.css";
 import {
-  // Container,
-  // Row,
-  // Col,
-  // InputGroup,
-  // FormControl,
   Button,
 } from "react-bootstrap";
 
