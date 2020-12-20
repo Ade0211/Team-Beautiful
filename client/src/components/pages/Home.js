@@ -91,7 +91,7 @@ const Home = () => {
     });
   };
 
-  const randomShuffle = shuffleArray(filteredData);
+ shuffleArray(filteredData);
 
   const executeOnClick = (isExpanded) => {
     console.log(isExpanded);
