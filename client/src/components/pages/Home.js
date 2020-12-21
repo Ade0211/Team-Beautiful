@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "../../bootstrap.min.css";
 import "../../index.css";
+<<<<<<< HEAD
 import {
   Button,
 } from "react-bootstrap";
 
+=======
+import { Button } from "react-bootstrap";
+>>>>>>> bcd37e4aeeda0cf553a1e2cf9bbec4f8bbe214ae
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
@@ -19,6 +23,7 @@ function shuffleArray(array) {
   }
   return array;
 }
+<<<<<<< HEAD
 
 const Home = () => {
   const [location, setLocation] = useState("");
@@ -30,6 +35,11 @@ const Home = () => {
    * selectable quotes, reducing the array length by 1
    */
 
+=======
+const Home = () => {
+  const [location, setLocation] = useState("");
+  const [language, setLanguage] = useState("");
+>>>>>>> bcd37e4aeeda0cf553a1e2cf9bbec4f8bbe214ae
   const initialState = {
     full_time: false,
     part_time: false,
@@ -117,6 +127,7 @@ const Home = () => {
   console.log(filteredData);
 
   return (
+<<<<<<< HEAD
     <div className="container">
       <div className="container">
         <h4 className="display-3">Graduates Directory</h4>
@@ -204,11 +215,109 @@ const Home = () => {
                   />
                   Contract
                 </label>
+=======
+    <div className="container-fluid navbar-expand-lg">
+      <div className="card-header container-fluid">
+        <div className="d-flex justify-content-end">
+          <div className="container">
+            <h4 className="display-3">Graduates Directory</h4>
+            <p>
+              Our amazing and talented graduates are looking for new
+              opportunities. Check out our graduate directory to see if they may
+              be right fit for you
+            </p>
+            <div className="container ">
+              <div className="form-row">
+                <div className="col-3">
+                  <div class="form-group">
+                    <input
+                      class="form-control mr-sm-2"
+                      type="text"
+                      name="Location"
+                      value={location}
+                      onChange={handleLocation}
+                      placeholder="Location"
+                      aria-label="Search"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      class="form-control mr-sm-2"
+                      type="text"
+                      placeholder="Language"
+                      aria-label="Search"
+                      value={language}
+                      onChange={handleLanguage}
+                    />
+                  </div>
+                </div>
+                <div className="col-8 ml-4">
+                  <div className="form-col">
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        type="checkbox"
+                        name="full_time"
+                        value={full_time}
+                        onChange={handleCheckBox}
+                      />
+                      Full-Time
+                    </label>
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        type="checkbox"
+                        name="part_time"
+                        value={part_time}
+                        onChange={handleCheckBox}
+                      />
+                      Part-Time
+                    </label>
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        type="checkbox"
+                        name="internship"
+                        value={internship}
+                        onChange={handleCheckBox}
+                      />
+                      Internship
+                    </label>
+                  </div>
+                  <div className="form-col">
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        type="checkbox"
+                        name="willing_remote"
+                        value={willing_remote}
+                        onChange={handleCheckBox}
+                      />
+                      Remote
+                    </label>
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        name="willing_relocate"
+                        value={willing_relocate}
+                        onChange={handleCheckBox}
+                        type="checkbox"
+                      />
+                      Relocate
+                    </label>
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        name="contract"
+                        value={contract}
+                        type="checkbox"
+                        onChange={handleCheckBox}
+                      />
+                      Contract
+                    </label>
+                  </div>
+                </div>
+>>>>>>> bcd37e4aeeda0cf553a1e2cf9bbec4f8bbe214ae
               </div>
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div className="row mb-2">
         {filteredData.length > 0 &&
           filteredData.map((graduate, _id) => {
@@ -277,6 +386,90 @@ const Home = () => {
                       <div class="row justify-content-around ">
                         <div class="col-4">
                           <i class="fab fa-linkedin fa-2x"></i>
+=======
+      <div className="container">
+        <div className="row mb-2">
+          {filteredData.length > 0 &&
+            filteredData.map((graduate, _id) => {
+              return (
+                <div className="col-md-6 card-text-left border-success">
+                  <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+                    <div className="col p-4 d-flex flex-column">
+                      <strong className="d-inline-block mb-2 text-success">
+                        <h4 className="float-right">
+                          {
+                            <Link to={`/graduates/${graduate._id}/profile`}>
+                              <i class="fas fa-share-square"></i>
+                            </Link>
+                          }
+                        </h4>
+                        <h3>{graduate.fullname}</h3>
+                      </strong>
+                      <h3 className="mb-0">{graduate.headline}</h3>
+                      <div className="mb-1 text-muted">
+                        {graduate.current_location}
+                      </div>
+                      <div className="mb-1 text-muted">
+                        Languages : {graduate.languages}
+                      </div>
+                      <div className="row justify-content-around">
+                        <p>
+                          {graduate.willing_remote ? (
+                            <button type="button" className="btn btn-success">
+                              Can Work Remote
+                            </button>
+                          ) : (
+                            <button type="button" className="btn btn-danger">
+                              Can't Work Remote
+                            </button>
+                          )}
+                        </p>
+                        <p>
+                          {graduate.willing_relocate ? (
+                            <button type="button" className="btn btn-success">
+                              Can Relocate
+                            </button>
+                          ) : (
+                            <button type="button" className="btn btn-danger">
+                              Can't Relocate
+                            </button>
+                          )}
+                        </p>
+                      </div>
+
+                      <div className="row justify-content-around">
+                        <p class="card-text">
+                          {graduate.full_time ? "Full Time" : ""}
+                        </p>
+                        <p class="card-text">
+                          {graduate.part_time ? "Part Time" : ""}
+                        </p>
+                        <p class="card-text">
+                          {graduate.willing_relocate ? "Open to Relocate" : ""}
+                        </p>
+                        <p class="card-text">
+                          {graduate.willing_remote ? "Open to Remote" : ""}
+                        </p>
+                      </div>
+                      <hr />
+                      <div className="container">
+                        <div class="row justify-content-around ">
+                          <div class="col-4">
+                            <i class="fab fa-linkedin fa-2x"></i>
+
+                            <Link
+                              className="ml-2"
+                              style={{ fontSize: "65%" }}
+                              target="_blank"
+                              rel="noreferrer"
+                              href={""}
+                            >
+                              LinkedIn
+                            </Link>
+                          </div>
+                          <div class="col-4 mt-1">
+                            <i class="fas fa-globe fa-2x"> </i>
+>>>>>>> bcd37e4aeeda0cf553a1e2cf9bbec4f8bbe214ae
 
                           <Link
                             className="ml-2"
