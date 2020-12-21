@@ -9,12 +9,13 @@ require("dotenv").config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const app = express();
-// const PORT = 3001;
-// app.use(cors());
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api", router);
 
+// Database connection code.
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useFindAndModify: false,
