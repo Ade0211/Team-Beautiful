@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const router = require("./routes/index");
 const MongoClient = require("mongodb").MongoClient;
-const MONGODB_URI =
-  "mongodb+srv://tb_User:thebeautifulone@team-beautiful.t0a84.mongodb.net/tb_User?retryWrites=true&w=majority";
+const MONGODB_URI = process.env.MONGODB_URI;
 const app = express();
 const PORT = 3001;
 app.use(cors());
