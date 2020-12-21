@@ -5,7 +5,7 @@ const router = require("./routes/index");
 const paths = require("path");
 const PORT = process.env.PORT || 3001;
 require("dotenv").config();
-// const MongoClient = require("mongodb").MongoClient;
+
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const app = express();
