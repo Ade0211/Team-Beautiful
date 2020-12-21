@@ -4,8 +4,6 @@ var multer = require("multer");
 var app = express();
 const router = express.Router();
 const Graduate = require("../models/graduate");
-var multer  =   require('multer');
-var app = express();
 
 require("dotenv").config;
 
@@ -45,41 +43,41 @@ router.post("/graduates", function (req, res) {
   });
 });
 
-
-router.post('/graduates', function(req, res) {
-  upload(req,res,function(err) {
-    console.log(req.files)
-    if(err) {
-        return res.end("Error uploading file.");
+router.post("/graduates", function (req, res) {
+  upload(req, res, function (err) {
+    console.log(req.files);
+    if (err) {
+      return res.end("Error uploading file.");
     }
 
-  let graduate = new Graduate(req.body);
-  console.log(graduate)
+    let graduate = new Graduate(req.body);
+    console.log(graduate);
 
-  graduate.save()
-    .then(graduate => {
-      res.send(graduate);
-    })
-    .catch(function(err) {
-      res.status(422).send('Graduate add failed');
-    });
+    graduate
+      .save()
+      .then((graduate) => {
+        res.send(graduate);
+      })
+      .catch(function (err) {
+        res.status(422).send("Graduate add failed");
+      });
   });
 });
 
-var storage =   multer.diskStorage({
+var storage = multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, './uploads');
+    callback(null, "./uploads");
   },
   filename: function (req, file, callback) {
     callback(null, file.originalname);
-  }
+  },
 });
-var upload = multer({ storage : storage}).single('file');
-app.get('/',function(req,res){
-      res.sendFile(__dirname + "/index.html");
-})
+var upload = multer({ storage: storage }).single("file");
+// app.get('/',function(req,res){
+//       res.sendFile(__dirname + "/index.html");
+// })
 
-router.patch('/graduates/:id', function(req, res){
+router.patch("/graduates/:id", function (req, res) {
   Graduate.findByIdAndUpdate(req.params.id, req.body)
     .then(function () {
       res.json("Graduate updated");
