@@ -7,7 +7,6 @@ const Graduate = require("../models/graduate");
 var multer  =   require('multer');
 var app = express();
 
-
 require("dotenv").config;
 
 app.use(bodyParser.json());

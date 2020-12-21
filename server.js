@@ -10,6 +10,7 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use("/api", router);
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,

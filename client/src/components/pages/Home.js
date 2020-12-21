@@ -1,16 +1,7 @@
-
 import React, { useState } from "react";
 import "../../bootstrap.min.css";
 import "../../index.css";
-import {
-  // Container,
-  // Row,
-  // Col,
-  // InputGroup,
-  // FormControl,
-  Button,
-} from "react-bootstrap";
-// import logo from "../utility/logo.png"
+import { Button } from "react-bootstrap";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
@@ -25,19 +16,9 @@ function shuffleArray(array) {
   }
   return array;
 }
-
-
 const Home = () => {
-
   const [location, setLocation] = useState("");
   const [language, setLanguage] = useState("");
-  // const getRandIndex = arr => Math.floor(Math.random() * arr.length);
-
-  /**
-   * Select a quote at random and remove from the current list of
-   * selectable quotes, reducing the array length by 1
-   */
-
   const initialState = {
     full_time: false,
     part_time: false,
@@ -90,7 +71,7 @@ const Home = () => {
     });
   };
 
- shuffleArray(filteredData);
+  shuffleArray(filteredData);
 
   const executeOnClick = (isExpanded) => {
     console.log(isExpanded);
@@ -124,117 +105,107 @@ const Home = () => {
 
   console.log(filteredData);
 
-
   return (
     <div className="container-fluid navbar-expand-lg">
-       <div className="card-header container-fluid">
-
+      <div className="card-header container-fluid">
         <div className="d-flex justify-content-end">
-
-           <div className="container">
-        <h4 className="display-3">Graduates Directory</h4>
-        <p>
-          Our amazing and talented graduates are looking for new opportunities.
-          Check out our graduate directory to see if they may be right fit for
-          you
-        </p>
-        <div className="container ">
-          <div className="form-row">
-            <div className="col-3">
-              <div class="form-group">
-                <input
-                  class="form-control mr-sm-2"
-                  type="text"
-                  name="Location"
-                  value={location}
-                  onChange={handleLocation}
-                  placeholder="Location"
-                  aria-label="Search"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  class="form-control mr-sm-2"
-                  type="text"
-                  placeholder="Language"
-                  aria-label="Search"
-                  value={language}
-                  onChange={handleLanguage}
-                />
-              </div>
-            </div>
-              <div className="col-8 ml-4">
-                <div className="form-col">
-                  <label class="checkbox-inline mr-3">
+          <div className="container">
+            <h4 className="display-3">Graduates Directory</h4>
+            <p>
+              Our amazing and talented graduates are looking for new
+              opportunities. Check out our graduate directory to see if they may
+              be right fit for you
+            </p>
+            <div className="container ">
+              <div className="form-row">
+                <div className="col-3">
+                  <div class="form-group">
                     <input
-                      type="checkbox"
-                      name="full_time"
-                      value={full_time}
-                      onChange={handleCheckBox}
+                      class="form-control mr-sm-2"
+                      type="text"
+                      name="Location"
+                      value={location}
+                      onChange={handleLocation}
+                      placeholder="Location"
+                      aria-label="Search"
                     />
-                    Full-Time
-                  </label>
-                  <label class="checkbox-inline mr-3">
+                  </div>
+                  <div class="form-group">
                     <input
-                      type="checkbox"
-                      name="part_time"
-                      value={part_time}
-                      onChange={handleCheckBox}
+                      class="form-control mr-sm-2"
+                      type="text"
+                      placeholder="Language"
+                      aria-label="Search"
+                      value={language}
+                      onChange={handleLanguage}
                     />
-                    Part-Time
-                  </label>
-                  <label class="checkbox-inline mr-3">
-                    <input
-                      type="checkbox"
-                      name="internship"
-                      value={internship}
-                      onChange={handleCheckBox}
-                    />
-                    Internship
-                  </label>
+                  </div>
                 </div>
-                <div className="form-col">
-                  <label class="checkbox-inline mr-3">
-                    <input
-                      type="checkbox"
-                      name="willing_remote"
-                      value={willing_remote}
-                      onChange={handleCheckBox}
-                    />
-                    Remote
-                  </label>
-                  <label class="checkbox-inline mr-3">
-                    <input
-                      name="willing_relocate"
-                      value={willing_relocate}
-                      onChange={handleCheckBox}
-                      type="checkbox"
-                    />
-                    Relocate
-                  </label>
-                  <label class="checkbox-inline mr-3">
-                    <input
-                      name="contract"
-                      value={contract}
-                      type="checkbox"
-                      onChange={handleCheckBox}
-                    />
-                    Contract
-                  </label>
+                <div className="col-8 ml-4">
+                  <div className="form-col">
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        type="checkbox"
+                        name="full_time"
+                        value={full_time}
+                        onChange={handleCheckBox}
+                      />
+                      Full-Time
+                    </label>
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        type="checkbox"
+                        name="part_time"
+                        value={part_time}
+                        onChange={handleCheckBox}
+                      />
+                      Part-Time
+                    </label>
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        type="checkbox"
+                        name="internship"
+                        value={internship}
+                        onChange={handleCheckBox}
+                      />
+                      Internship
+                    </label>
+                  </div>
+                  <div className="form-col">
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        type="checkbox"
+                        name="willing_remote"
+                        value={willing_remote}
+                        onChange={handleCheckBox}
+                      />
+                      Remote
+                    </label>
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        name="willing_relocate"
+                        value={willing_relocate}
+                        onChange={handleCheckBox}
+                        type="checkbox"
+                      />
+                      Relocate
+                    </label>
+                    <label class="checkbox-inline mr-3">
+                      <input
+                        name="contract"
+                        value={contract}
+                        type="checkbox"
+                        onChange={handleCheckBox}
+                      />
+                      Contract
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
-            </div>
+          </div>
         </div>
       </div>
-
-
-
-
-
-
-
       <div className="container">
         <div className="row mb-2">
           {filteredData.length > 0 &&
@@ -382,11 +353,8 @@ const Home = () => {
             })}
         </div>
       </div>
-      </div>
-
+    </div>
   );
 };
-
-
 
 export default Home;
