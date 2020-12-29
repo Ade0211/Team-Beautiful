@@ -63,6 +63,9 @@ const graduateSchema = new mongoose.Schema({
     type: String,
     max: 200,
   },
+  id_token: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Graduate", graduateSchema);

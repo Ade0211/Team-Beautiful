@@ -42,6 +42,8 @@ function GraduateAdd(props) {
     }
     postgraduate();
   }
+  let newUser = JSON.parse(localStorage.getItem('graduate'));
+  console.log(newUser);
   // function handleCancel() {
   //   props.history.push("/graduates");
   // }
@@ -284,6 +286,7 @@ function GraduateAdd(props) {
               </div>
             </div>
             <div class="col">
+              <p></p>
               <div class="mb-3">
                 <label for="txtArea" class="form-label">
                   Enter Your resume details here
